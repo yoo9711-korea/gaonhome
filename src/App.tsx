@@ -339,34 +339,7 @@ function App() {
 
 <Footer />
 
-      <button
-        onClick={() => {
-          const password = prompt("관리자 비밀번호를 입력하세요");
-
-          if (password === "728072") {
-            sessionStorage.setItem("admin", "ok");
-            window.location.href = "/admin";
-          } else {
-            alert("비밀번호가 틀렸습니다.");
-          }
-        }}
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          background: "#333",
-          color: "#fff",
-          border: "none",
-          borderRadius: "8px",
-          padding: "10px 15px",
-          cursor: "pointer",
-          zIndex: 9999,
-        }}
-      >
-        관리자
-      </button>
-
-    </div>
+          </div>
   );
 }
 
