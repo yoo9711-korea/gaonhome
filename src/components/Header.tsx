@@ -3,10 +3,20 @@ type HeaderProps = {
 };
 
 function Header({ logo }: HeaderProps) {
+  const openAdmin = () => {
+    const password = prompt("관리자 비밀번호를 입력하세요.");
+
+    if (password === "728072") {
+      sessionStorage.setItem("admin", "ok");
+      window.location.href = "/admin";
+    } else if (password !== null) {
+      alert("비밀번호가 틀렸습니다.");
+    }
+  };
+
   return (
     <header className="header">
       <div className="container header-inner">
-
         <div className="brand">
           <img src={logo} alt="라이프픽스 홈케어" />
 
@@ -16,38 +26,17 @@ function Header({ logo }: HeaderProps) {
           </div>
         </div>
 
-        <nav>
-          <a href="#service">서비스 안내</a>
-          <a href="#price">요금 안내</a>
-          <a href="#contact">문의하기</a>
+        <div className="header-right">
+          <nav className="main-nav">
+            <a href="#service">서비스 안내</a>
+            <a href="#price">요금 안내</a>
+            <a href="#contact">문의하기</a>
+          </nav>
 
-          <button
-            onClick={() => {
-              const password = prompt("관리자 비밀번호를 입력하세요.");
-
-              if (password === "728072") {
-                sessionStorage.setItem("admin", "ok");
-                window.location.href = "/admin";
-              } else {
-                alert("비밀번호가 틀렸습니다.");
-              }
-            }}
-            style={{
-              background: "#1976d2",
-              color: "#fff",
-              border: "none",
-              borderRadius: "6px",
-              padding: "8px 16px",
-              marginLeft: "20px",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
+          <button className="admin-btn" onClick={openAdmin}>
             관리자
           </button>
-
-        </nav>
-
+        </div>
       </div>
     </header>
   );
